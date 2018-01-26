@@ -31,6 +31,8 @@ import Trend from '../../components/Trend';
 import NumberInfo from '../../components/NumberInfo';
 import Result from '../../components/Result';
 import { getTimeDistance } from '../../utils/utils';
+import TableList from '../../routes/List/TableList';
+import StandardTable from '../../components/StandardTable';
 
 import styles from './Analysis.less';
 
@@ -119,6 +121,8 @@ export default class Analysis extends Component {
   }
 
   render() {
+    const { selectedRows, modalVisible } = this.state;
+
     const { rangePickerValue, salesType, currentTabKey } = this.state;
     const { chart, loading } = this.props;
     const { submitting } = this.props;
@@ -276,9 +280,16 @@ export default class Analysis extends Component {
       </div>
     );
 
+{/*
+    @connect(({ rule, loading }) => ({
+      rule,
+      loading: loading.models.rule,
+    }))
+
+*/}
     return (
       <div>
-        <Card  title="Policy Advisor" className={styles.card} bordered={true}>
+        <Card  title="Valhalla Policy Advisor" className={styles.card} bordered={true}>
           <Form>
             <Result
               title="Add rule: All email domains are configured to protect against spoofing "
@@ -288,6 +299,7 @@ export default class Analysis extends Component {
               style={{ marginTop: 48, marginBottom: 16 }}
             />
           <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
+            {/* TODO: Get the buttons aligned to center, see https://ant.design/components/form/ */}
             <Button type="primary" htmlType="submit" loading={submitting}>
               Add
             </Button>
@@ -296,7 +308,7 @@ export default class Analysis extends Component {
           </Form>
         </Card>
 
-        <Card>
+        <Card title="E-Corp Security Policy" className={styles.card} bordered={true}>
           <Tabs activeKey={activeKey} onChange={this.handleTabChange}>
             {offlineData.map(shop => (
               <TabPane tab={<CustomTab data={shop} currentTabKey={activeKey} />} key={shop.name}>
@@ -305,6 +317,19 @@ export default class Analysis extends Component {
             ))}
           </Tabs>
         </Card>
+{/*
+        <Card>
+          <div className={styles.tableList}>
+            <StandardTable
+              loading={loading}
+              data={table_data}
+              columns={columns}
+              onSelectRow={this.handleSelectRows}
+              onChange={this.handleStandardTableChange}
+            />
+          </div>
+        </Card>
+        */}
       </div>
     );
   }

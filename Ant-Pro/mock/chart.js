@@ -124,7 +124,7 @@ offlineData.push({
 offlineData.push({
   name: 'PROTECT',
   passing: 0,
-  cvr: 0.1,
+  cvr: 0,
 });
 offlineData.push({
   name: 'DETECT',

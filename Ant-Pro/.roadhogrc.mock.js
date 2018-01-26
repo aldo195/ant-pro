@@ -23,10 +23,10 @@ const proxy = {
       },
     },
     $body: {
-      name: 'Serati Ma',
+      name: 'Ofir Brukner',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
       userid: '00000001',
-      notifyCount: 12,
+      notifyCount: 3,
     },
   },
   // GET POST 可省略
