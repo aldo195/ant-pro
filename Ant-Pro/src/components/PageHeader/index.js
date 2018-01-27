@@ -80,7 +80,7 @@ export default class PageHeader extends PureComponent {
     extraBreadcrumbItems.unshift(
       <Breadcrumb.Item key="home">
         {createElement(linkElement, {
-        [linkElement === 'a' ? 'href' : 'to']: '/' }, '首页')}
+        [linkElement === 'a' ? 'href' : 'to']: '/' }, 'HomeZZ')}
       </Breadcrumb.Item>
     );
     return (

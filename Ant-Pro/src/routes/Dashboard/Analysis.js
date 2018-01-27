@@ -316,20 +316,12 @@ export default class Analysis extends Component {
               </TabPane>
             ))}
           </Tabs>
+
+
+            <TableList/>
+
         </Card>
-{/*
-        <Card>
-          <div className={styles.tableList}>
-            <StandardTable
-              loading={loading}
-              data={table_data}
-              columns={columns}
-              onSelectRow={this.handleSelectRows}
-              onChange={this.handleStandardTableChange}
-            />
-          </div>
-        </Card>
-        */}
+        }
       </div>
     );
   }

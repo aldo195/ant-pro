@@ -267,7 +267,7 @@ export default class TableList extends PureComponent {
           <Col md={8} sm={24}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">查询</Button>
-              <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>重置</Button>
+              <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>重置xxx</Button>
               <a style={{ marginLeft: 8 }} onClick={this.toggleForm}>
                 展开 <Icon type="down" />
               </a>
@@ -355,13 +355,17 @@ export default class TableList extends PureComponent {
   }
 
   render() {
+
+    console.log('I was triggered during render')
+
+
     const { rule: { data }, loading } = this.props;
     const { selectedRows, modalVisible } = this.state;
 
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
-        <Menu.Item key="remove">删除</Menu.Item>
-        <Menu.Item key="approval">批量审批</Menu.Item>
+        <Menu.Item key="remove">RemoveThis</Menu.Item>
+        <Menu.Item key="approval">ApproveThis</Menu.Item>
       </Menu>
     );
 
@@ -379,15 +383,15 @@ export default class TableList extends PureComponent {
             </div>
             <div className={styles.tableListOperator}>
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                新建
+                Bararararang
               </Button>
               {
                 selectedRows.length > 0 && (
                   <span>
-                    <Button>批量操作</Button>
+                    <Button>Floopyloopy</Button>
                     <Dropdown overlay={menu}>
                       <Button>
-                        更多操作 <Icon type="down" />
+                        Nomnomnom <Icon type="down" />
                       </Button>
                     </Dropdown>
                   </span>

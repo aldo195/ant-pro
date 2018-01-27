@@ -11,27 +11,14 @@ const FormItem = Form.Item;
 const { Option } = Select;
 const getValue = obj => Object.keys(obj).map(key => obj[key]).join(',');
 const statusMap = ['default', 'processing', 'success', 'error'];
-const status = ['关闭', '运行中', '已上线', '异常'];
+const status = ['On Hold', 'Running', 'Passed', 'Failed'];
 const columns = [
   {
-    title: '规则编号',
-    dataIndex: 'no',
+    title: 'Rule Name',
+    dataIndex: 'title',
   },
   {
-    title: '描述',
-    dataIndex: 'description',
-  },
-  {
-    title: '服务调用次数',
-    dataIndex: 'callNo',
-    sorter: true,
-    align: 'right',
-    render: val => `${val} 万`,
-    // mark to display a total number
-    needTotal: true,
-  },
-  {
-    title: '状态',
+    title: 'Status',
     dataIndex: 'status',
     filters: [
       {
@@ -56,20 +43,10 @@ const columns = [
     },
   },
   {
-    title: '更新时间',
+    title: 'Latest Test',
     dataIndex: 'updatedAt',
     sorter: true,
     render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
-  },
-  {
-    title: '操作',
-    render: () => (
-      <Fragment>
-        <a href="">配置</a>
-        <Divider type="vertical" />
-        <a href="">订阅警报</a>
-      </Fragment>
-    ),
   },
 ];
 
@@ -266,8 +243,8 @@ export default class TableList extends PureComponent {
           </Col>
           <Col md={8} sm={24}>
             <span className={styles.submitButtons}>
-              <Button type="primary" htmlType="submit">查询</Button>
-              <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>重置</Button>
+              <Button type="primary" htmlType="submit">Submit</Button>
+              <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>Reset</Button>
               <a style={{ marginLeft: 8 }} onClick={this.toggleForm}>
                 展开 <Icon type="down" />
               </a>
@@ -360,8 +337,8 @@ export default class TableList extends PureComponent {
 
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
-        <Menu.Item key="remove">删除</Menu.Item>
-        <Menu.Item key="approval">批量审批</Menu.Item>
+        <Menu.Item key="remove">RRRemove</Menu.Item>
+        <Menu.Item key="approval">APPProve</Menu.Item>
       </Menu>
     );
 
@@ -371,30 +348,7 @@ export default class TableList extends PureComponent {
     };
 
     return (
-      <PageHeaderLayout title="Rules Table">
-        <Card bordered={false}>
-          <div className={styles.tableList}>
-            <div className={styles.tableListForm}>
-              {this.renderForm()}
-            </div>
-            <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                新建
-              </Button>
-              {
-                selectedRows.length > 0 && (
-                  <span>
-                    <Button>批量操作</Button>
-                    <Dropdown overlay={menu}>
-                      <Button>
-                        更多操作 <Icon type="down" />
-                      </Button>
-                    </Dropdown>
-                  </span>
-                )
-              }
-            </div>
-            <StandardTable
+            <StandardTable title="Policy Rules for IDENTIFY"
               selectedRows={selectedRows}
               loading={loading}
               data={data}
@@ -402,13 +356,6 @@ export default class TableList extends PureComponent {
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
             />
-          </div>
-        </Card>
-        <CreateForm
-          {...parentMethods}
-          modalVisible={modalVisible}
-        />
-      </PageHeaderLayout>
     );
   }
 }
