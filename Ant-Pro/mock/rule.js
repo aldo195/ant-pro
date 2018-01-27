@@ -3,34 +3,116 @@ import { getUrlParams } from './utils';
 // mock tableListDataSource
 let tableListDataSource = [];
 
-{/*
 tableListDataSource.push({
   key: 0,
-  disabled: ((i % 6) === 0),
-  href: 'https://ant.design',
-  avatar: ['https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png', 'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png'][i % 2],
-  no: `TradeCode zzz`,
-  title: `All our email domains are configured to protect against spoofing`,
-  owner: 'Mr Magoo',
-  description: 'Email service providers for us and our customers are instructed to discard emails that do not appear to originate from us or our vendors.',
-  callNo: Math.floor(Math.random() * 1000),
-  status: 0,
-  updatedAt: new Date(`2018-02-${Math.floor(i / 2) + 1}`),
-  createdAt: new Date(`2018-02-${Math.floor(i / 2) + 1}`),
-  progress: Math.ceil(Math.random() * 100),
-});
-*/}
-
-let i = 0;
-tableListDataSource.push({
-  key: i,
   title: `All email domains are configured to protect against spoofing`,
-  owner: 'Rick Sanchez',
+  owner: 'Andrey Fedorov',
   description: 'Email service providers for us and our customers are instructed to discard emails that do not appear to originate from us or our vendors.',
-  status: Math.floor(Math.random() * 10) % 4,
-  updatedAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
-  createdAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
+  status: 3,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-25 14:00:00`),
 });
+
+tableListDataSource.push({
+  key: 1,
+  title: `All email domains are configured with an aggregator service for forgery reports`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 3,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-25 14:00:00`),
+});
+
+tableListDataSource.push({
+  key: 2,
+  title: `Accounts for terminated employees are suspended within 24 hours`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 3,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-18 14:00:00`),
+});
+
+tableListDataSource.push({
+  key: 3,
+  title: `GCP users with “owner” role are authorized company admins`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 3,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-10 14:00:00`),
+});
+
+tableListDataSource.push({
+  key: 4,
+  title: `All exceptions in Stackdriver have URL/IP specified to support debugging`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 3,
+  updatedAt: new Date(`2018-01-18 14:15:00`),
+  createdAt: new Date(`2018-01-10 14:00:00`),
+});
+
+tableListDataSource.push({
+  key: 5,
+  title: `All exceptions in Stackdriver are acknowledged within 1 hour`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 2,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-10 14:00:00`),
+});
+
+tableListDataSource.push({
+  key: 6,
+  title: `All exceptions in Stackdriver are resolved within 24 hours`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 2,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-10 14:00:00`),
+});
+
+tableListDataSource.push({
+  key: 7,
+  title: `Users with administrator privileges must be approved in policy`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 2,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-10 14:10:00`),
+});
+
+tableListDataSource.push({
+  key: 8,
+  title: `User logins require 2-Step Verification`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 2,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-10 14:10:00`),
+});
+
+tableListDataSource.push({
+  key: 9,
+  title: `Globally accessible VM instances are approved`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 2,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-10 14:20:00`),
+});
+
+tableListDataSource.push({
+  key: 10,
+  title: `All VM instances outside of GKE are approved`,
+  owner: 'Andrey Fedorov',
+  description: '',
+  status: 2,
+  updatedAt: new Date(`2018-01-25 14:00:00`),
+  createdAt: new Date(`2018-01-10 14:20:00`),
+});
+
 
 export function getRule(req, res, u) {
   let url = u;
