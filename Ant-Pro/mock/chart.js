@@ -15,6 +15,9 @@ const visitData2 = [];
 visitData2.push({
     name:  'Add rule: All email domains are configured to protect against spoofing',
 });
+visitData2.push({
+    name:  'Add rule: Never get high off your own supply',
+});
 const salesData = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({

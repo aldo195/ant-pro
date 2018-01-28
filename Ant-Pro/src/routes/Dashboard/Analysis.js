@@ -82,20 +82,26 @@ export default class Analysis extends Component {
   };
 
   handleTabChange = (key) => {
+    console.log('changing tab');
     this.setState({
       currentTabKey: key,
     });
   };
 
   handleRangePickerChange = (rangePickerValue) => {
+    console.log('Here I am');
     this.setState({
       rangePickerValue,
     });
+  };
 
-    this.props.dispatch({
-      type: 'chart/fetchSalesData',
+  handleSkipButton = () => {
+    console.log('Skip');
+    this.setState({
+      currentTabKey: 0,
     });
   };
+
 
   selectDate = (type) => {
     this.setState({
@@ -147,11 +153,6 @@ export default class Analysis extends Component {
 
     const activeKey = currentTabKey || (offlineData[0] && offlineData[0].name);
     const activeRule = currentRule || (visitData2[0] && visitData2[0].name);
-    if (activeRule) {
-      console.log('Howdy from Line 149: '+ activeRule);
-    } else {
-      console.log('No activeRule')
-    }
 
     const CustomTab = ({ data, currentTabKey: currentKey }) => (
       <Row gutter={8} style={{ width: 138, margin: '8px 0' }}>
@@ -191,11 +192,10 @@ export default class Analysis extends Component {
               style={{ marginTop: 48, marginBottom: 16 }}
             />
           <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
-
             <Button type="primary" htmlType="submit" loading={submitting}>
               Add
             </Button>
-            <Button style={{ marginLeft: 30 }}>Skip</Button>
+            <Button style={{ marginLeft: 30 }} onClick={this.handleSkipButton}>Skip</Button>
           </FormItem>
           </Form>
         </Card>
