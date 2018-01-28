@@ -58,6 +58,7 @@ export default class Analysis extends Component {
   state = {
     salesType: 'all',
     currentTabKey: '',
+    currentRule: '',
     rangePickerValue: getTimeDistance('year'),
   };
 
@@ -123,7 +124,7 @@ export default class Analysis extends Component {
   render() {
     const { selectedRows, modalVisible } = this.state;
 
-    const { rangePickerValue, salesType, currentTabKey } = this.state;
+    const { rangePickerValue, salesType, currentTabKey, currentRule } = this.state;
     const { chart, loading } = this.props;
     const { submitting } = this.props;
     const {
@@ -145,6 +146,12 @@ export default class Analysis extends Component {
     };
 
     const activeKey = currentTabKey || (offlineData[0] && offlineData[0].name);
+    const activeRule = currentRule || (visitData2[0] && visitData2[0].name);
+    if (activeRule) {
+      console.log('Howdy from Line 149: '+ activeRule);
+    } else {
+      console.log('No activeRule')
+    }
 
     const CustomTab = ({ data, currentTabKey: currentKey }) => (
       <Row gutter={8} style={{ width: 138, margin: '8px 0' }}>
@@ -171,23 +178,13 @@ export default class Analysis extends Component {
         </Col>
       </Row>
     );
-
-
-
-{/*
-    @connect(({ rule, loading }) => ({
-      rule,
-      loading: loading.models.rule,
-    }))
-
-*/}
 {/* TODO: Get the buttons aligned to center, see https://ant.design/components/form/ */}
     return (
       <div>
         <Card  title="Valhalla Policy Advisor" className={styles.card} bordered={true}>
           <Form>
             <Result
-              title="Add rule: All email domains are configured to protect against spoofing "
+              title={activeRule}
               description="CSF Category: PROTECT (PR.AC-6)"
               //advice={advice}
 

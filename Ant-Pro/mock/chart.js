@@ -11,16 +11,10 @@ for (let i = 0; i < fakeY.length; i += 1) {
     y: fakeY[i],
   });
 }
-
 const visitData2 = [];
-const fakeY2 = [1, 6, 4, 8, 3, 7, 2];
-for (let i = 0; i < fakeY2.length; i += 1) {
-  visitData2.push({
-    x: moment(new Date(beginDay + (1000 * 60 * 60 * 24 * i))).format('YYYY-MM-DD'),
-    y: fakeY2[i],
-  });
-}
-
+visitData2.push({
+    name:  'Add rule: All email domains are configured to protect against spoofing',
+});
 const salesData = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({
