@@ -6,7 +6,7 @@ const menuData = [{
   path: 'list/basic-list',
 }, {
   name: 'Approval Lists',
-  icon: 'table',
+  icon: 'check-square-o',
   path: 'list',
   children: [{
     name: '查询表格',

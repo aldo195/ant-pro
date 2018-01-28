@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './index.less';
 
 export default ({
-  theme, title, subTitle, total, subTotal, status, suffix, gap, ...rest
+  theme, title, subTitle, total, subTotal, status, suffix, gap, passing, failing, pending, ...rest
 }) => (
   <div
     className={
@@ -16,9 +16,9 @@ export default ({
   >
     {title && <div className={styles.numberInfoTitle}>{title}</div>}
     {subTitle && <div className={styles.numberInfoSubTitle}>{subTitle}</div>}
-    <p>Passing: 0</p>
-    <p>Failing: 0</p>
-    <p>On Hold: 0</p>
+    <p>Passing: { passing }</p>
+    <p>Failing: { failing }</p>
+    <p>Pending: { pending }</p>
     {/*
     <div className={styles.numberInfoValue} style={gap ? { marginTop: gap } : null}>
       <span>

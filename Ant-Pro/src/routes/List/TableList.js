@@ -11,7 +11,7 @@ const FormItem = Form.Item;
 const { Option } = Select;
 const getValue = obj => Object.keys(obj).map(key => obj[key]).join(',');
 const statusMap = ['default', 'processing', 'success', 'error'];
-const status = ['On Hold', 'Running', 'Passed', 'Failed'];
+const status = ['Pending Validation', 'Running', 'Passed', 'Failed'];
 const columns = [
   {
     title: 'Rule Name',

@@ -14,6 +14,7 @@ export default {
     salesTypeDataOnline: [],
     salesTypeDataOffline: [],
     radarData: [],
+    csfCategories: [],
     loading: false,
   },
 
@@ -55,6 +56,7 @@ export default {
         salesTypeDataOnline: [],
         salesTypeDataOffline: [],
         radarData: [],
+        csfCategories: [],
       };
     },
   },

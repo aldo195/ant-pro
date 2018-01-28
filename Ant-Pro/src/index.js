@@ -7,6 +7,11 @@ import createHistory from 'history/createHashHistory';
 // import createHistory from 'history/createBrowserHistory';
 import createLoading from 'dva-loading';
 import 'moment/locale/zh-cn';
+
+import { LocaleProvider } from 'antd';
+import fr_FR from 'antd/lib/locale-provider/fr_FR';
+import 'moment/locale/fr';
+
 import FastClick from 'fastclick';
 import './rollbar';
 

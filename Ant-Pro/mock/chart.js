@@ -118,29 +118,48 @@ const salesTypeDataOffline = [
 const offlineData = [];
 offlineData.push({
   name: 'IDENTIFY',
-  passing: 0.0,
+  passing: 2,
+  failing: 2,
+  pending: 0,
   cvr: 0,
 });
 offlineData.push({
   name: 'PROTECT',
-  passing: 0,
+  passing: 2,
+  failing: 5,
+  pending: 0,
   cvr: 0,
 });
 offlineData.push({
   name: 'DETECT',
-  passing: 0,
+  passing: 2,
+  failing: 4,
+  pending: 0,
   cvr: 0,
 });
 offlineData.push({
   name: 'RESPOND',
   passing: 0,
+  failing: 0,
+  pending: 0,
   cvr: 0,
 });
 offlineData.push({
   name: 'RECOVER',
   passing: 0,
+  failing: 0,
+  pending: 0,
   cvr: 0,
 });
+
+{/*
+const csfCategories = [];
+csfCategories.push({
+    name: 'zippity',
+  });
+}
+*/}
+
 
 const offlineChartData = [];
 for (let i = 0; i < 20; i += 1) {
@@ -208,7 +227,7 @@ export const getFakeChartData = {
   offlineChartData,
   salesTypeData,
   salesTypeDataOnline,
-  salesTypeDataOffline,
+
   radarData,
 };
 
