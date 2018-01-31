@@ -2,13 +2,73 @@ import React, { PureComponent } from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Row, Col, Card, List, Avatar, Table } from 'antd';
+import { Row, Col, Card, List, Avatar } from 'antd';
 
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 import EditableLinkGroup from '../../components/EditableLinkGroup';
 import { Radar } from '../../components/Charts';
 
 import styles from './Workplace.less';
+
+const links = [
+  {
+    title: '操作一',
+    href: '',
+  },
+  {
+    title: '操作二',
+    href: '',
+  },
+  {
+    title: '操作三',
+    href: '',
+  },
+  {
+    title: '操作四',
+    href: '',
+  },
+  {
+    title: '操作五',
+    href: '',
+  },
+  {
+    title: '操作六',
+    href: '',
+  },
+];
+
+const members = [
+  {
+    id: 'members-1',
+    title: '科学搬砖组',
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+    link: '',
+  },
+  {
+    id: 'members-2',
+    title: '程序员日常',
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/cnrhVkzwxjPwAaCfPbdc.png',
+    link: '',
+  },
+  {
+    id: 'members-3',
+    title: '设计天团',
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/gaOngJwsRYRaVAuXXcmB.png',
+    link: '',
+  },
+  {
+    id: 'members-4',
+    title: '中二少女团',
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/ubnKSIfAJTxIgXOKlciN.png',
+    link: '',
+  },
+  {
+    id: 'members-5',
+    title: '骗你学计算机',
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/WhxKECPNujWoWEFNdnJE.png',
+    link: '',
+  },
+];
 
 @connect(({ project, activities, chart, loading }) => ({
   project,
@@ -108,63 +168,7 @@ export default class Workplace extends PureComponent {
       </div>
     );
 
-    const dataSource = [{
-      key: '1',
-      name: 'Status',
-      value: 'Failed'
-    }, {
-      key: '2',
-      name: 'System',
-      value: 'Google Cloud Platform'
-    },{
-      key: '3',
-      name: 'Test Time',
-      value: '2018-01-10 11:50:00 UTC '
-    },{
-      key: '4',
-      name: 'Reason',
-      value: 'Unapproved user "Felix" has "owner" role'
-    },{
-      key: '5',
-      name: 'Rule Creation',
-      value: 'January 30, 2018'
-    },{
-      key: '6',
-      name: 'Owner',
-      value: 'Beth Goldman'
-    },{
-      key: '7',
-      name: 'CSF',
-      value: 'PROTECT/Access Control (PR.AC)'
-    }];
-
-    const columns = [{
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-    }, {
-      title: 'Value',
-      dataIndex: 'value',
-      key: 'value',
-    }];
-
-
-
     return (
-      <div>
-        <Card
-          bordered={true}
-          title="Windows workstations are restarted within two business days of any security update install in order to complete the installation"
-          >
-          <Table
-            dataSource={dataSource}
-            columns={columns}
-            pagination={false}
-            bordered={true}
-            showHeader={false}/>
-         </Card>
-      </div>
-      /*
       <PageHeaderLayout
         content={pageHeaderContent}
         extraContent={extraContent}
@@ -266,7 +270,6 @@ export default class Workplace extends PureComponent {
           </Col>
         </Row>
       </PageHeaderLayout>
-      */
     );
   }
 }

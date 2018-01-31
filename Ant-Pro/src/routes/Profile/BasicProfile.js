@@ -127,7 +127,7 @@ export default class BasicProfile extends Component {
     }];
     return (
       <Card bordered={true}>
-          <DescriptionList size="large" title="Metrics Over Time" style={{ marginBottom: 32 }}>
+          <DescriptionList size="large" title="Validation Over Time" style={{ marginBottom: 32 }}>
             <Description term="取货单号">1000000000</Description>
             <Description term="状态">已取货</Description>
             <Description term="销售单号">1234123421</Description>

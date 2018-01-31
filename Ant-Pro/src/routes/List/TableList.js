@@ -348,13 +348,14 @@ export default class TableList extends PureComponent {
     };
 
     return (
-            <StandardTable title="Policy Rules for IDENTIFY"
+            <StandardTable title="Zoozoogabor"
               selectedRows={selectedRows}
               loading={loading}
               data={data}
               columns={columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
+              
             />
     );
   }

@@ -32,7 +32,6 @@ import NumberInfo from '../../components/NumberInfo';
 import Result from '../../components/Result';
 import { getTimeDistance } from '../../utils/utils';
 import TableList from '../../routes/List/TableList';
-import StandardTable from '../../components/StandardTable';
 
 import styles from './Analysis.less';
 
@@ -224,7 +223,7 @@ export default class Analysis extends Component {
         <Card title="Sigma Security Policy" className={styles.card} bordered={true}>
           <Row>
             <Col sm={8} xs={24}>
-              <Info title="Compliance Rate" value="55%" bordered />
+              <Info title="Validation Rate" value="55%" bordered />
             </Col>
             <Col sm={8} xs={24}>
               <Info title="Rules Added This Week" value="2" bordered />
