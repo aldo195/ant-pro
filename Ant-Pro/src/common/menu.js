@@ -1,48 +1,17 @@
 import { isUrl } from '../utils/utils';
 
 const menuData = [{
-  name: 'Policy Rules',
+  name: 'Security Policy',
   icon: 'table',
-  path: 'list/basic-list',
+  path: 'dashboard/analysis',
 }, {
   name: 'Approval Lists',
   icon: 'check-square-o',
-  path: 'list',
-  children: [{
-    name: '查询表格',
-    path: 'table-list',
-  }, {
-    name: 'Policy Rules',
-    path: 'basic-list',
-  }, {
-    name: '卡片列表',
-    path: 'card-list',
-  }, {
-    name: '搜索列表',
-    path: 'search',
-    children: [{
-      name: '搜索列表（文章）',
-      path: 'articles',
-    }, {
-      name: '搜索列表（项目）',
-      path: 'projects',
-    }, {
-      name: '搜索列表（应用）',
-      path: 'applications',
-    }],
-  }],
+  path: 'list/basic-list',
 }, {
   name: 'Metrics',
   icon: 'dashboard',
-  path: 'profile',
-  children: [{
-    name: '基础详情页',
-    path: 'basic',
-  }, {
-    name: '高级详情页',
-    path: 'advanced',
-    authority: 'admin',
-  }],
+  path: 'profile/basic',
 }];
 
 function formatter(data, parentPath = '', parentAuthority) {

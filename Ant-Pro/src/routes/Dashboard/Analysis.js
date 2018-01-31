@@ -58,7 +58,7 @@ export default class Analysis extends Component {
   state = {
     salesType: 'all',
     currentTabKey: '',
-    currentRule: '',
+    currentRuleKey: 0,
     rangePickerValue: getTimeDistance('year'),
   };
 
@@ -83,6 +83,8 @@ export default class Analysis extends Component {
 
   handleTabChange = (key) => {
     console.log('changing tab');
+    console.log('Debug1 '+Object.keys(key));
+
     this.setState({
       currentTabKey: key,
     });
@@ -96,10 +98,16 @@ export default class Analysis extends Component {
   };
 
   handleSkipButton = () => {
-    console.log('Skip');
-    this.setState({
-      currentTabKey: 0,
-    });
+    console.log('Debug '+this.state.currentRuleKey);
+    if(this.state.currentRuleKey < 5) {
+      this.setState({
+        currentRuleKey: this.state.currentRuleKey+1,
+      });
+    } else {
+        this.setState({
+          currentRuleKey: 1,
+        });
+    }
   };
 
 
@@ -130,7 +138,7 @@ export default class Analysis extends Component {
   render() {
     const { selectedRows, modalVisible } = this.state;
 
-    const { rangePickerValue, salesType, currentTabKey, currentRule } = this.state;
+    const { rangePickerValue, salesType, currentTabKey, currentRuleKey } = this.state;
     const { chart, loading } = this.props;
     const { submitting } = this.props;
     const {
@@ -152,7 +160,23 @@ export default class Analysis extends Component {
     };
 
     const activeKey = currentTabKey || (offlineData[0] && offlineData[0].name);
-    const activeRule = currentRule || (visitData2[0] && visitData2[0].name);
+    const activeRuleKey = currentRuleKey || (visitData2[0] && visitData2[0].name);
+
+    // TODO: Write this logic the right way
+    if (visitData2[activeRuleKey]) {
+      var activeRuleName = visitData2[activeRuleKey].name;
+    }
+    else {
+      var activeRuleName = '';
+    }
+
+    const Info = ({ title, value, bordered }) => (
+      <div className={styles.headerInfo}>
+        <span>{title}</span>
+        <p>{value}</p>
+        {bordered && <em />}
+      </div>
+    );
 
     const CustomTab = ({ data, currentTabKey: currentKey }) => (
       <Row gutter={8} style={{ width: 138, margin: '8px 0' }}>
@@ -185,10 +209,8 @@ export default class Analysis extends Component {
         <Card  title="Valhalla Policy Advisor" className={styles.card} bordered={true}>
           <Form>
             <Result
-              title={activeRule}
+              title={activeRuleName}
               description="CSF Category: PROTECT (PR.AC-6)"
-              //advice={advice}
-
               style={{ marginTop: 48, marginBottom: 16 }}
             />
           <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
@@ -200,6 +222,17 @@ export default class Analysis extends Component {
           </Form>
         </Card>
         <Card title="Sigma Security Policy" className={styles.card} bordered={true}>
+          <Row>
+            <Col sm={8} xs={24}>
+              <Info title="Compliance Rate" value="55%" bordered />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="Rules Added This Week" value="2" bordered />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="Total Rules" value="11" />
+            </Col>
+          </Row>
           <Tabs activeKey={activeKey} onChange={this.handleTabChange}>
             {offlineData.map(shop => (
               <TabPane tab={<CustomTab data={shop} currentTabKey={activeKey} />} key={shop.name}>

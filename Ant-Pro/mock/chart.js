@@ -11,6 +11,7 @@ for (let i = 0; i < fakeY.length; i += 1) {
     y: fakeY[i],
   });
 }
+
 const visitData2 = [];
 visitData2.push({
     name:  'Add rule: All email domains are configured to protect against spoofing',
@@ -18,6 +19,16 @@ visitData2.push({
 visitData2.push({
     name:  'Add rule: Never get high off your own supply',
 });
+visitData2.push({
+    name:  'Add rule: No consignment',
+});
+visitData2.push({
+    name:  'Add rule: Stay away from police',
+});
+visitData2.push({
+    name:  'Add rule: Biggie',
+});
+
 const salesData = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({
@@ -148,15 +159,6 @@ offlineData.push({
   pending: 0,
   cvr: 0,
 });
-
-{/*
-const csfCategories = [];
-csfCategories.push({
-    name: 'zippity',
-  });
-}
-*/}
-
 
 const offlineChartData = [];
 for (let i = 0; i < 20; i += 1) {

@@ -85,17 +85,14 @@ export default class GlobalHeader extends PureComponent {
           onClick={this.toggle}
         />
         <div className={styles.right}>
-          <HeaderSearch
-            className={`${styles.action} ${styles.search}`}
-            placeholder="站内搜索"
-            dataSource={['搜索提示一', '搜索提示二', '搜索提示三']}
-            onSearch={(value) => {
-              console.log('input', value); // eslint-disable-line
-            }}
-            onPressEnter={(value) => {
-              console.log('enter', value); // eslint-disable-line
-            }}
+          <Icon
+            type="cloud-upload-o"
+            className={styles.action}
+            style={{ fontSize: 22 }}
+            popupAlign={{ offset: [20, -16] }}
           />
+          Upload Policy
+
           <NoticeIcon
             className={styles.action}
             count={currentUser.notifyCount}

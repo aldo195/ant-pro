@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
-import { List, Card, Row, Col, Radio, Input, Progress, Button, Icon, Dropdown, Menu, Avatar, Tabs } from 'antd';
+import { List, Card, Row, Col, Radio, Input, Progress, Button, Icon, Dropdown, Menu, Avatar } from 'antd';
 
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
@@ -93,40 +93,56 @@ export default class BasicList extends PureComponent {
       </Dropdown>
     );
 
-    const TabPane = Tabs.TabPane;
-
-    if(list[0]){
-      var tab1title = list[0].title;
-      var tab1description = list[0].description;
-      var tab2title = list[1].title;
-      var tab2description = list[1].description;
-      var tab3title = list[2].title;
-      var tab3description = list[2].description;
-      var tab4title = list[3].title;
-      var tab4description = list[3].description;
-    }
-
     return (
+      <PageHeaderLayout>
         <div className={styles.standardList}>
-        <Card
-          className={styles.listCard}
-          bordered={true}
-          title="Approval Lists"
-          style={{ marginTop: 24 }}
-          bodyStyle={{ padding: '0 32px 40px 32px' }}
+          <Card bordered={false}>
+            <Row>
+              <Col sm={8} xs={24}>
+                <Info title="我的待办" value="8个任务" bordered />
+              </Col>
+              <Col sm={8} xs={24}>
+                <Info title="本周任务平均处理时间" value="32分钟" bordered />
+              </Col>
+              <Col sm={8} xs={24}>
+                <Info title="本周完成任务数" value="24个任务" />
+              </Col>
+            </Row>
+          </Card>
+
+          <Card
+            className={styles.listCard}
+            bordered={false}
+            title="标准列表"
+            style={{ marginTop: 24 }}
+            bodyStyle={{ padding: '0 32px 40px 32px' }}
+            extra={extraContent}
           >
-           <Tabs
-             defaultActiveKey="1"
-             tabPosition='left'
-             style={{ height: 220 }}
-           >
-             <TabPane tab={tab1title} key="1">{tab1description}</TabPane>
-             <TabPane tab={tab2title} key="2">{tab2description}</TabPane>
-             <TabPane tab={tab3title} key="3">{tab3description}</TabPane>
-             <TabPane tab={tab4title} key="4">{tab4description}</TabPane>
-           </Tabs>
-         </Card>
+            <Button type="dashed" style={{ width: '100%', marginBottom: 8 }} icon="plus">
+              添加
+            </Button>
+            <List
+              size="large"
+              rowKey="id"
+              loading={loading}
+              pagination={paginationProps}
+              dataSource={list}
+              renderItem={item => (
+                <List.Item
+                  actions={[<a>编辑</a>, <MoreBtn />]}
+                >
+                  <List.Item.Meta
+                    avatar={<Avatar src={item.logo} shape="square" size="large" />}
+                    title={<a href={item.href}>{item.title}</a>}
+                    description={item.subDescription}
+                  />
+                  <ListContent data={item} />
+                </List.Item>
+              )}
+            />
+          </Card>
         </div>
+      </PageHeaderLayout>
     );
   }
 }

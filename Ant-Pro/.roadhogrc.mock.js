@@ -23,7 +23,7 @@ const proxy = {
       },
     },
     $body: {
-      name: 'Ofir Brukner',
+      name: 'Andrey Fedorov',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
       userid: '00000001',
       notifyCount: 3,
