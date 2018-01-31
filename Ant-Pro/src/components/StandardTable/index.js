@@ -82,7 +82,7 @@ class StandardTable extends PureComponent {
           onChange={this.handleTableChange}
           onRow={(record) => ({ //this aint pretty, I know :P It's also the cause of the error: React does not recognize the `popupAlign` prop on a DOM element
             onClick: () => {
-              self.location = "dashboard/#/dashboard/workplace";
+              self.location = "/dashboard/#/dashboard/workplace";
             },
         })}
         />

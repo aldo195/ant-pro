@@ -7,6 +7,7 @@ import { Row, Col, Card, List, Avatar, Table } from 'antd';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 import EditableLinkGroup from '../../components/EditableLinkGroup';
 import { Radar } from '../../components/Charts';
+import Result from '../../components/Result';
 
 import styles from './Workplace.less';
 
@@ -109,39 +110,39 @@ export default class Workplace extends PureComponent {
     );
 
     const dataSource = [{
-      key: '1',
       name: 'Status',
       value: 'Failed'
     }, {
-      key: '2',
       name: 'System',
       value: 'Google Cloud Platform'
     },{
-      key: '3',
       name: 'Test Time',
       value: '2018-01-10 11:50:00 UTC '
     },{
-      key: '4',
       name: 'Reason',
       value: 'Unapproved user "Felix" has "owner" role'
     },{
-      key: '5',
       name: 'Rule Creation',
       value: 'January 30, 2018'
     },{
-      key: '6',
       name: 'Owner',
       value: 'Beth Goldman'
     },{
-      key: '7',
       name: 'CSF',
       value: 'PROTECT/Access Control (PR.AC)'
+    },{
+      name: 'Description',
+      value: 'The "owner" role in GCP allows actions that can expose the organization to major risk. As such, it should be limited to the minimal users that are dedicated to infrastructure and user administration. Developers, for example, should generally not be granted the "owner" role.'
+    },{
+      name: 'Test Logic',
+      value: 'Fail test if any user with owner role is not listed in “Approved Admins”'
     }];
 
     const columns = [{
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      width: 150,
     }, {
       title: 'Value',
       dataIndex: 'value',
@@ -154,6 +155,16 @@ export default class Workplace extends PureComponent {
       <div>
         <Card
           bordered={true}
+          >
+          <Result
+            type="google"
+            title="G Suite oAuth Consent Required"
+            description="Approve G Suite integration to enable rule validation"
+            className={styles.result}
+          />
+        </Card>
+        <Card
+          bordered={true}
           title="Windows workstations are restarted within two business days of any security update install in order to complete the installation"
           >
           <Table
@@ -164,109 +175,6 @@ export default class Workplace extends PureComponent {
             showHeader={false}/>
          </Card>
       </div>
-      /*
-      <PageHeaderLayout
-        content={pageHeaderContent}
-        extraContent={extraContent}
-      >
-        <Row gutter={24}>
-          <Col xl={16} lg={24} md={24} sm={24} xs={24}>
-            <Card
-              className={styles.projectList}
-              style={{ marginBottom: 24 }}
-              title="进行中的项目"
-              bordered={false}
-              extra={<Link to="/">全部项目</Link>}
-              loading={projectLoading}
-              bodyStyle={{ padding: 0 }}
-            >
-              {
-                notice.map(item => (
-                  <Card.Grid className={styles.projectGrid} key={item.id}>
-                    <Card bodyStyle={{ padding: 0 }} bordered={false}>
-                      <Card.Meta
-                        title={(
-                          <div className={styles.cardTitle}>
-                            <Avatar size="small" src={item.logo} />
-                            <Link to={item.href}>{item.title}</Link>
-                          </div>
-                        )}
-                        description={item.description}
-                      />
-                      <div className={styles.projectItemContent}>
-                        <Link to={item.memberLink}>{item.member || ''}</Link>
-                        {item.updatedAt && (
-                          <span className={styles.datetime} title={item.updatedAt}>
-                            {moment(item.updatedAt).fromNow()}
-                          </span>
-                        )}
-                      </div>
-                    </Card>
-                  </Card.Grid>
-                ))
-              }
-            </Card>
-            <Card
-              bodyStyle={{ padding: 0 }}
-              bordered={false}
-              className={styles.activeCard}
-              title="动态"
-              loading={activitiesLoading}
-            >
-              <List loading={activitiesLoading} size="large">
-                <div className={styles.activitiesList}>
-                  {this.renderActivities()}
-                </div>
-              </List>
-            </Card>
-          </Col>
-          <Col xl={8} lg={24} md={24} sm={24} xs={24}>
-            <Card
-              style={{ marginBottom: 24 }}
-              title="快速开始 / 便捷导航"
-              bordered={false}
-              bodyStyle={{ padding: 0 }}
-            >
-              <EditableLinkGroup
-                onAdd={() => {}}
-                links={links}
-                linkElement={Link}
-              />
-            </Card>
-            <Card
-              style={{ marginBottom: 24 }}
-              bordered={false}
-              title="XX 指数"
-              loading={radarData.length === 0}
-            >
-              <div className={styles.chart}>
-                <Radar hasLegend height={343} data={radarData} />
-              </div>
-            </Card>
-            <Card
-              bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}
-              bordered={false}
-              title="团队"
-            >
-              <div className={styles.members}>
-                <Row gutter={48}>
-                  {
-                    members.map(item => (
-                      <Col span={12} key={`members-item-${item.id}`}>
-                        <Link to={item.link}>
-                          <Avatar src={item.logo} size="small" />
-                          <span className={styles.member}>{item.title}</span>
-                        </Link>
-                      </Col>
-                    ))
-                  }
-                </Row>
-              </div>
-            </Card>
-          </Col>
-        </Row>
-      </PageHeaderLayout>
-      */
     );
   }
 }
